@@ -1,0 +1,275 @@
+<Project>
+  <Name>HobbySailor</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Lists</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ItemsList&lt;TEntity&gt;</Name>
+        <Access>Public</Access>
+        <Location left="65" top="37" />
+        <Size width="382" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected readonly List&lt;TEntity&gt; items</Member>
+        <Member type="Property">public IEnumerable&lt;IFilter&gt; Filters { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ISortModifier&gt; SortModifiers { get; }</Member>
+        <Member type="Method">public abstract IEnumerable&lt;TEntity&gt; GetItemsList()</Member>
+        <Member type="Constructor">protected ItemsList(IEnumerable&lt;TEntity&gt; items)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BoatsList</Name>
+        <Access>Public</Access>
+        <Location left="332" top="268" />
+        <Size width="252" height="114" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public IEnumerable&lt;Boat&gt; GetItemsList()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SkippersList</Name>
+        <Access>Public</Access>
+        <Location left="65" top="268" />
+        <Size width="236" height="114" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public IEnumerable&lt;Skipper&gt; GetItemsList()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Filters</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>SkipperPriceFilter</Name>
+        <Access>Public</Access>
+        <Location left="971" top="231" />
+        <Size width="214" height="132" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">decimal value</Member>
+        <Member type="Method">public Func&lt;Skipper, bool&gt; Apply()</Member>
+        <Member type="Constructor">public SkipperPriceFilter(decimal value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SkipperExprFilter</Name>
+        <Access>Public</Access>
+        <Location left="750" top="231" />
+        <Size width="190" height="132" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int value</Member>
+        <Member type="Method">public Func&lt;Skipper, bool&gt; Apply()</Member>
+        <Member type="Constructor">public SkipperExprFilter(int value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CabinsFilter</Name>
+        <Access>Public</Access>
+        <Location left="544" top="231" />
+        <Size width="162" height="132" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int value</Member>
+        <Member type="Method">public Func&lt;Boat, bool&gt; Apply()</Member>
+        <Member type="Constructor">public CabinsFilter(int value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>HullTypeFilter</Name>
+        <Access>Public</Access>
+        <Location left="324" top="231" />
+        <Size width="180" height="132" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">HullType value</Member>
+        <Member type="Method">public Func&lt;Boat, bool&gt; Apply()</Member>
+        <Member type="Constructor">public HullTypeFilter(HullType value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LocationFilter</Name>
+        <Access>Public</Access>
+        <Location left="64" top="231" />
+        <Size width="192" height="129" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string value</Member>
+        <Member type="Method">public Func&lt;Boat, bool&gt; Apply()</Member>
+        <Member type="Constructor">public LocationFilter(string value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IFilter&lt;TEntity&gt;</Name>
+        <Access>Public</Access>
+        <Location left="64" top="34" />
+        <Size width="214" height="82" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;TEntity, bool&gt; Apply()</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="4" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>95</X>
+          <Y>143</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="0" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Sorting</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>SortByCabinsNum</Name>
+        <Access>Public</Access>
+        <Location left="934" top="211" />
+        <Size width="214" height="99" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;Boat, bool&gt; Apply(bool asc)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SortByRating</Name>
+        <Access>Public</Access>
+        <Location left="645" top="211" />
+        <Size width="257" height="98" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;Skipper, bool&gt; Apply(bool asc)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SortByExpirience</Name>
+        <Access>Public</Access>
+        <Location left="381" top="211" />
+        <Size width="227" height="99" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;Skipper, bool&gt; Apply(bool asc)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SortByPrice</Name>
+        <Access>Public</Access>
+        <Location left="78" top="211" />
+        <Size width="238" height="99" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;Skipper, bool&gt; Apply(bool asc)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISortModifier&lt;TEntity&gt;</Name>
+        <Access>Public</Access>
+        <Location left="270" top="56" />
+        <Size width="257" height="89" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Func&lt;TEntity, bool&gt; Apply(bool asc)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="0" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1060</X>
+          <Y>186</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>500</X>
+          <Y>172</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>370</X>
+          <Y>173</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Models</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Boat</Name>
+        <Access>Public</Access>
+        <Location left="52" top="195" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int Name { get; set; }</Member>
+        <Member type="Property">public int CabinsNum { get; set; }</Member>
+        <Member type="Property">public HullType HullType { get; set; }</Member>
+        <Member type="Property">public DriveType DriveType { get; set; }</Member>
+        <Member type="Property">public string Location { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DriveType</Name>
+        <Access>Public</Access>
+        <Location left="246" top="195" />
+        <Size width="162" height="97" />
+        <Collapsed>False</Collapsed>
+        <Value>Sails</Value>
+        <Value>Motor</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>HullType</Name>
+        <Access>Public</Access>
+        <Location left="246" top="28" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Mono</Value>
+        <Value>Catamaran</Value>
+        <Value>Trimaran</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Skipper</Name>
+        <Access>Public</Access>
+        <Location left="52" top="28" />
+        <Size width="162" height="130" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public decimal Price { get; set; }</Member>
+        <Member type="Property">public byte Expirience { get; set; }</Member>
+        <Member type="Property">public byte Rating { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>

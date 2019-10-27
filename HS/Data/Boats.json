@@ -1,0 +1,191 @@
+[
+  {
+    "Name": "Gogol",
+    "CabinsNum": 4,
+    "HullType": 2,
+    "DriveType": 2,
+    "Location": "GR"
+  },
+  {
+    "Name": "Atomica",
+    "CabinsNum": 2,
+    "HullType": 1,
+    "DriveType": 2,
+    "Location": "CR"
+  },
+  {
+    "Name": "Plutorque",
+    "CabinsNum": 5,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "BG"
+  },
+  {
+    "Name": "Magmina",
+    "CabinsNum": 5,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "BG"
+  },
+  {
+    "Name": "Corepan",
+    "CabinsNum": 4,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "BG"
+  },
+  {
+    "Name": "Isbol",
+    "CabinsNum": 3,
+    "HullType": 3,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Pharmacon",
+    "CabinsNum": 2,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "BG"
+  },
+  {
+    "Name": "Comtour",
+    "CabinsNum": 3,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "CR"
+  },
+  {
+    "Name": "Fanfare",
+    "CabinsNum": 2,
+    "HullType": 3,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Strozen",
+    "CabinsNum": 5,
+    "HullType": 2,
+    "DriveType": 2,
+    "Location": "BG"
+  },
+  {
+    "Name": "Zanymax",
+    "CabinsNum": 3,
+    "HullType": 2,
+    "DriveType": 2,
+    "Location": "GR"
+  },
+  {
+    "Name": "Oceanica",
+    "CabinsNum": 5,
+    "HullType": 1,
+    "DriveType": 2,
+    "Location": "GR"
+  },
+  {
+    "Name": "Qualitex",
+    "CabinsNum": 4,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "GR"
+  },
+  {
+    "Name": "Jetsilk",
+    "CabinsNum": 5,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "CR"
+  },
+  {
+    "Name": "Progenex",
+    "CabinsNum": 3,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "CR"
+  },
+  {
+    "Name": "Musaphics",
+    "CabinsNum": 5,
+    "HullType": 2,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Waab",
+    "CabinsNum": 2,
+    "HullType": 2,
+    "DriveType": 1,
+    "Location": "BG"
+  },
+  {
+    "Name": "Accruex",
+    "CabinsNum": 4,
+    "HullType": 3,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Proflex",
+    "CabinsNum": 3,
+    "HullType": 1,
+    "DriveType": 2,
+    "Location": "BG"
+  },
+  {
+    "Name": "Emoltra",
+    "CabinsNum": 2,
+    "HullType": 2,
+    "DriveType": 1,
+    "Location": "BG"
+  },
+  {
+    "Name": "Spherix",
+    "CabinsNum": 5,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "GR"
+  },
+  {
+    "Name": "Bittor",
+    "CabinsNum": 5,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Zoarere",
+    "CabinsNum": 2,
+    "HullType": 2,
+    "DriveType": 1,
+    "Location": "BG"
+  },
+  {
+    "Name": "Emergent",
+    "CabinsNum": 3,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "CR"
+  },
+  {
+    "Name": "Menbrain",
+    "CabinsNum": 2,
+    "HullType": 3,
+    "DriveType": 1,
+    "Location": "GR"
+  },
+  {
+    "Name": "Paprikut",
+    "CabinsNum": 3,
+    "HullType": 3,
+    "DriveType": 2,
+    "Location": "BG"
+  },
+  {
+    "Name": "Geekus",
+    "CabinsNum": 4,
+    "HullType": 1,
+    "DriveType": 1,
+    "Location": "BG"
+  }
+]
