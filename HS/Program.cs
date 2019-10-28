@@ -16,7 +16,7 @@ namespace HS
 
             var context = new DataContext();
 
-            var boats = context.GetEntities<Boat>();
+            var boats = context.GetEntities<Boat>();  
   
             var filters = new List<IFilter<Boat>>()
             {
@@ -29,8 +29,8 @@ namespace HS
                 new SortByCabinsNum()
             };
 
-            var boatsList = new ItemsList<Boat>(boats, filters, boatsSorters);
-            //var boatsList = new ItemsList<Boat>(boats);
+            //var boatsList = new ItemsList<Boat>(boats, filters, boatsSorters);
+            var boatsList = new ItemsList<Boat>(boats);
 
 
             Console.WriteLine("Boats: ");
