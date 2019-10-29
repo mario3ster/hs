@@ -1,23 +1,26 @@
-﻿using HS.Data;
-using HS.Filters;
-using HS.Lists;
-using HS.Models;
-using HS.Sorting;
-using System;
-using System.Collections.Generic;
-
-namespace HS
+﻿namespace HS
 {
+    using HS.Data;
+    using HS.Filters;
+    using HS.Lists;
+    using HS.Models;
+    using HS.Sorting;
+    using HS.Paging;
+    using System;
+    using System.Collections.Generic;
+    
     class Program
     {
-        static void Main(string[] args)
+        private static DataContext context = new DataContext();
+
+        private static ItemsList<Boat> InitBoats()
         {
-            Console.WriteLine("HS ver. 1.0");
-
-            var context = new DataContext();
-
-            var boats = context.GetEntities<Boat>();  
-  
+             var boats = context.GetEntities<Boat>(); 
+             var pager = new DefaultPager(3);
+           
+             //var boatsList = new ItemsList<Boat>(boats, filters, boatsSorters);
+            var boatsList = new ItemsList<Boat>(boats, pager);
+        
             var filters = new List<IFilter<Boat>>()
             {
                 new CabinsFilter(5),
@@ -29,20 +32,13 @@ namespace HS
                 new SortByCabinsNum()
             };
 
-            //var boatsList = new ItemsList<Boat>(boats, filters, boatsSorters);
-            var boatsList = new ItemsList<Boat>(boats);
+            return boatsList;
+        }
 
-
-            Console.WriteLine("Boats: ");
-
-
-            foreach (var boat in boatsList.Items)
-            {
-                Console.WriteLine( boat.ToString() ); 
-            }
-
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine("Skippers: ");
+        private static ItemsList<Skipper> InitSkippers()
+        {         
+            var skippers = context.GetEntities<Skipper>();   
+            var pager = new DefaultPager(4);
 
             var skippersSorters = new List<ISortModifier<Skipper>>()
             {
@@ -50,15 +46,68 @@ namespace HS
                 new SortByPrice() { Asc = false }
             };
 
-            var skippers = context.GetEntities<Skipper>();
-            var skipperList = new ItemsList<Skipper>(skippers, null, skippersSorters);
+           
+            var skipperList = new ItemsList<Skipper>(skippers, pager, null, skippersSorters);
 
-            foreach (var skipper in skipperList.Items)
+            return skipperList;
+        }
+
+        static void Main(string[] args)
+        {
+            var boatsList = InitBoats();
+            var skippersList = InitSkippers();
+
+            Console.WriteLine("Boats: ");
+
+            foreach (var boat in boatsList.Items)
+            {
+                Console.WriteLine(boat.ToString());
+            }
+
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("Skippers: ");
+
+            foreach (var skipper in skippersList.Items)
             {
                 Console.WriteLine(skipper.ToString());
             }
 
-            Console.ReadLine();
+            do
+            {
+                System.Console.WriteLine("Enter Next / Prev for paging (or Exit)");
+                string userCommand = Console.ReadLine();
+
+                if (userCommand == "Exit") break;
+
+                switch (userCommand)
+                {
+                    case "Next":
+                        boatsList.Pager.GoNextPage();
+                        skippersList.Pager.GoNextPage();
+                        break;
+
+                    case "Prev":
+                        boatsList.Pager.GoPrevPage();
+                        skippersList.Pager.GoPrevPage();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                foreach (var boat in boatsList.Items)
+                {
+                    Console.WriteLine(boat.ToString());
+                }
+
+                foreach (var skipper in skippersList.Items)
+                {
+                    Console.WriteLine(skipper.ToString());
+                }
+
+                System.Console.WriteLine("Page " + boatsList.Pager.CurrentPage + "/" + boatsList.Count / boatsList.Pager.ItemsPerPage);
+
+            } while (true);
         }
     }
 }

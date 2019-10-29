@@ -2,12 +2,13 @@ namespace HS.Lists
 {
     using HS.Filters;
     using HS.Sorting;
+    using HS.Paging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+        
     public class ItemsList<TEntity>
-	{
+	{            
         private IEnumerable<TEntity> items;
 
         public IEnumerable<TEntity> Items
@@ -18,7 +19,7 @@ namespace HS.Lists
 
                 if (Filters != null)
                 {
-                    listWithMofifiersApplied = ApplyFilters(listWithMofifiersApplied);
+                    listWithMofifiersApplied = ApplyFiltering(listWithMofifiersApplied);
                 }
                     
                 if (SortModifiers != null)
@@ -26,7 +27,15 @@ namespace HS.Lists
                     listWithMofifiersApplied = ApplySorting(listWithMofifiersApplied);
                 } 
 
-                return listWithMofifiersApplied;
+                return listWithMofifiersApplied.Skip(Pager.SkipItems).Take(Pager.ItemsPerPage);
+            }
+        }        
+
+        public int Count 
+        { 
+            get 
+            {
+                return items.Count();
             }
         }
 
@@ -42,21 +51,29 @@ namespace HS.Lists
             set;
 		}
 
-        public ItemsList(IEnumerable<TEntity> items,
-           IEnumerable<IFilter<TEntity>> filters = null,
-           IEnumerable<ISortModifier<TEntity>> sorters = null)
+        public IPageable Pager { get; set; }
+
+        public ItemsList(IEnumerable<TEntity> listOfItems, IPageable pager)
         {
-            if (items == null)
+            if (listOfItems == null)
             {
-                throw new ArgumentNullException("The colection of items should not be null!");
+                throw new ArgumentNullException("The colection passed to the ctor of " + this.GetType() + " should not be null!");
             }
 
-            this.items = items;
+            items = listOfItems;
+            Pager = pager;
+        }
+
+        public ItemsList(IEnumerable<TEntity> listOfItems,
+            IPageable pagingPolicy,
+            IEnumerable<IFilter<TEntity>> filters,
+            IEnumerable<ISortModifier<TEntity>> sorters) : this (listOfItems, pagingPolicy)
+        {
             Filters = filters;
             SortModifiers = sorters;
         }
 
-        private IEnumerable<TEntity> ApplyFilters(IEnumerable<TEntity> listWithMofifiersApplied)
+        private IEnumerable<TEntity> ApplyFiltering(IEnumerable<TEntity> listWithMofifiersApplied)
         {
             var predicates = new List<Func<TEntity, bool>>();
 
@@ -69,23 +86,21 @@ namespace HS.Lists
         }
 
         private IOrderedEnumerable<TEntity> ApplySorting(IEnumerable<TEntity> listWithMofifiersApplied) {
-
-
-            var firstSort = SortModifiers.First();
+            var sortByFirstCriterion = SortModifiers.First();
             IOrderedEnumerable<TEntity> sortedList;
 
-            if (firstSort.Asc)
+            if (sortByFirstCriterion.Asc)
             {
-                sortedList = listWithMofifiersApplied.OrderBy(firstSort.SortByExpression);
+                sortedList = listWithMofifiersApplied.OrderBy(sortByFirstCriterion.SortByExpression);
             }
             else
             {
-                sortedList = listWithMofifiersApplied.OrderByDescending(firstSort.SortByExpression);
+                sortedList = listWithMofifiersApplied.OrderByDescending(sortByFirstCriterion.SortByExpression);
             }
 
-            var additionalSortModifiers = SortModifiers.Skip(1); // Sort by more than one column
+            var sortByAddtionalCriteria = SortModifiers.Skip(1); // Sort by more than one column => loop trough all the rest columns
 
-            foreach (var sortMod in additionalSortModifiers)
+            foreach (var sortMod in sortByAddtionalCriteria)
             {
                 if (sortMod.Asc)
                 {
@@ -99,5 +114,6 @@ namespace HS.Lists
 
             return sortedList;
         }
+    
     }
 }
