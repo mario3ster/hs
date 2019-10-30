@@ -7,6 +7,7 @@
     using HS.Sorting;
     using HS.Paging;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     
     class Program
@@ -16,7 +17,7 @@
         private static ItemsList<Boat> InitBoats()
         {
              var boats = context.GetEntities<Boat>(); 
-             var pager = new DefaultPager(3);
+             var pager = new DefaultPager(3, boats.Count());
            
              //var boatsList = new ItemsList<Boat>(boats, filters, boatsSorters);
             var boatsList = new ItemsList<Boat>(boats, pager);
@@ -38,7 +39,7 @@
         private static ItemsList<Skipper> InitSkippers()
         {         
             var skippers = context.GetEntities<Skipper>();   
-            var pager = new DefaultPager(4);
+            var pager = new DefaultPager(4, skippers.Count());
 
             var skippersSorters = new List<ISortModifier<Skipper>>()
             {
@@ -105,7 +106,7 @@
                     Console.WriteLine(skipper.ToString());
                 }
 
-                System.Console.WriteLine("Page " + boatsList.Pager.CurrentPage + "/" + boatsList.Count / boatsList.Pager.ItemsPerPage);
+                System.Console.WriteLine("Page " + boatsList.Pager.CurrentPage + "/" + boatsList.Pager.TotalPagesCount);
 
             } while (true);
         }

@@ -31,7 +31,7 @@ namespace HS.Lists
             }
         }        
 
-        public int Count 
+        public int TotalItemsCount
         { 
             get 
             {

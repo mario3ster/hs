@@ -4,6 +4,8 @@ namespace HS.Paging
     {
         byte ItemsPerPage { get; set; }
 
+        int TotalPagesCount { get; }
+
         byte CurrentPage { get; }
 
         int SkipItems { get; }
