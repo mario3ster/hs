@@ -4,6 +4,8 @@ namespace HS.Paging
 
     public class DefaultPager : IPageable
     {
+        private byte currentPage = 1;
+
         private int totalItemsCount;
 
         private const byte MAX_ITEMS_PER_PAGE = 255;
@@ -27,7 +29,20 @@ namespace HS.Paging
             }
         }
 
-        public byte CurrentPage { get; private set; }
+        public byte CurrentPage 
+        { 
+            get
+            {
+                return currentPage;
+            }
+            set 
+            {
+                if(value > 0 && value <= TotalPagesCount) 
+                {
+                    currentPage = value;
+                }       
+            }
+        }
 
         public int TotalPagesCount
         {
@@ -49,23 +64,6 @@ namespace HS.Paging
         {
             this.totalItemsCount = totalItemsCount;
             ItemsPerPage = itemsPerPage;
-            CurrentPage = 1;
-        }
-
-        public void GoPrevPage() 
-        {
-            if(CurrentPage > 1) 
-            {
-                CurrentPage--;
-            }            
-        }
-
-        public void GoNextPage() 
-        {
-            if( CurrentPage < TotalPagesCount) 
-            {
-                CurrentPage++;
-            }            
         }
     }
 }

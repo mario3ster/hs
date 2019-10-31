@@ -1,41 +1,36 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-
 namespace HS.Models
 {
-	public class Boat
-	{
-		public string Name
-		{
+    public class Boat
+    {
+        public string Name
+        {
             get;
             set;
-		}
+        }
 
-		public byte CabinsNum
-		{
+        public byte CabinsNum
+        {
             get;
             set;
-		}
+        }
 
-		public HullType HullType
-		{
+        public HullType HullType
+        {
             get;
             set;
-		}
+        }
 
-		public DriveType DriveType
-		{
+        public DriveType DriveType
+        {
             get;
             set;
-		}
+        }
 
-		public string Location
-		{
+        public string Location
+        {
             get;
             set;
-		}
+        }
 
         public override string ToString()
         {

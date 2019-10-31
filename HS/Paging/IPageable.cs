@@ -6,12 +6,8 @@ namespace HS.Paging
 
         int TotalPagesCount { get; }
 
-        byte CurrentPage { get; }
+        byte CurrentPage { get; set; }
 
         int SkipItems { get; }
-
-        void GoNextPage();
-
-        void GoPrevPage();
     }
 }

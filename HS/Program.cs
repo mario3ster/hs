@@ -75,21 +75,19 @@
 
             do
             {
-                System.Console.WriteLine("Enter Next / Prev for paging (or Exit)");
-                string userCommand = Console.ReadLine();
+                System.Console.WriteLine("Enter command [Go - go to paging] [Exit]");
+                string userCommand = Console.ReadLine().ToLower();
 
                 if (userCommand == "Exit") break;
 
                 switch (userCommand)
-                {
-                    case "Next":
-                        boatsList.Pager.GoNextPage();
-                        skippersList.Pager.GoNextPage();
-                        break;
+                {                   
+                    case "go":
+                        byte pageNumber = 1;
+                        Console.WriteLine("Page number: ");
+                        byte.TryParse(Console.ReadLine(), out pageNumber);
+                        boatsList.Pager.CurrentPage = pageNumber;
 
-                    case "Prev":
-                        boatsList.Pager.GoPrevPage();
-                        skippersList.Pager.GoPrevPage();
                         break;
 
                     default:
@@ -109,6 +107,6 @@
                 System.Console.WriteLine("Page " + boatsList.Pager.CurrentPage + "/" + boatsList.Pager.TotalPagesCount);
 
             } while (true);
-        }
+        }            
     }
 }

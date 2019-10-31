@@ -65,9 +65,9 @@ namespace HS.Lists
         }
 
         public ItemsList(IEnumerable<TEntity> listOfItems,
-            IPageable pagingPolicy,
+            IPageable pager,
             IEnumerable<IFilter<TEntity>> filters,
-            IEnumerable<ISortModifier<TEntity>> sorters) : this (listOfItems, pagingPolicy)
+            IEnumerable<ISortModifier<TEntity>> sorters) : this (listOfItems, pager)
         {
             Filters = filters;
             SortModifiers = sorters;

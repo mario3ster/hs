@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HS.Models
 {
 	public class Skipper
 	{
         public string Name { get; set; }
 
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         public byte Expirience { get; set; }
 
